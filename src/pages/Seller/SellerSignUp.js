@@ -98,7 +98,7 @@ const SellerSignUp = () => {
                 setErrCity("Enter your city name");
             }
             if (!country) {
-                setErrCountry("Enter the country you are residing");
+                setErrCountry("Enter the Introducer ID");
             }
             if (!zip) {
                 setErrZip("Enter the zip code of your area");
@@ -116,7 +116,7 @@ const SellerSignUp = () => {
                 zip
             ) {
                 setSuccessMsg(
-                    `Hello dear ${clientName}, Welcome you to OREBI Admin panel. We received your Sign up request. We are processing to validate your access. Till then stay connected and additional assistance will be sent to you by your mail at ${email}`
+                    `Hello dear ${clientName}, Welcome you to CYBERMART Admin panel. We received your Sign up request. We are processing to validate your access. Till then stay connected and additional assistance will be sent to you by your mail at ${email}`
                 );
                 setClientName("");
                 setEmail("");
@@ -218,22 +218,23 @@ const SellerSignUp = () => {
                                 Hey Seller! Create your Shop
                             </h1>
                             <div className="flex flex-col gap-3">
-                            {/* Introducer ID */}
-                            <div className="flex flex-col gap-.5">
+                                {/* Introducer ID */}
+                                {/* Country */}
+                                <div className="flex flex-col gap-.5">
                                     <p className="font-titleFont text-base font-semibold text-gray-600">
-                                        Introducer Id
+                                    Introducer ID
                                     </p>
                                     <input
-                                        onChange={handleName}
-                                        value={clientName}
+                                        onChange={handleCountry}
+                                        value={country}
                                         className="w-full h-8 placeholder:text-sm placeholder:tracking-wide px-4 text-base font-medium placeholder:font-normal rounded-md border-[1px] border-gray-400 outline-none"
                                         type="text"
-                                        placeholder="eg. 9928199128"
+                                        placeholder="eg. 111222333 "
                                     />
-                                    {errClientName && (
+                                    {errCountry && (
                                         <p className="text-sm text-red-500 font-titleFont font-semibold px-4">
                                             <span className="font-bold italic mr-1">!</span>
-                                            {errClientName}
+                                            {errCountry}
                                         </p>
                                     )}
                                 </div>
@@ -351,25 +352,7 @@ const SellerSignUp = () => {
                                         </p>
                                     )}
                                 </div>
-                                {/* Country */}
-                                <div className="flex flex-col gap-.5">
-                                    <p className="font-titleFont text-base font-semibold text-gray-600">
-                                        Country
-                                    </p>
-                                    <input
-                                        onChange={handleCountry}
-                                        value={country}
-                                        className="w-full h-8 placeholder:text-sm placeholder:tracking-wide px-4 text-base font-medium placeholder:font-normal rounded-md border-[1px] border-gray-400 outline-none"
-                                        type="text"
-                                        placeholder="Your country"
-                                    />
-                                    {errCountry && (
-                                        <p className="text-sm text-red-500 font-titleFont font-semibold px-4">
-                                            <span className="font-bold italic mr-1">!</span>
-                                            {errCountry}
-                                        </p>
-                                    )}
-                                </div>
+
                                 {/* Zip code */}
                                 <div className="flex flex-col gap-.5">
                                     <p className="font-titleFont text-base font-semibold text-gray-600">
@@ -405,8 +388,8 @@ const SellerSignUp = () => {
                                 <button
                                     onClick={handleSignUp}
                                     className={`${checked
-                                            ? "bg-primeColor hover:bg-black hover:text-white cursor-pointer"
-                                            : "bg-gray-500 hover:bg-gray-500 hover:text-gray-200 cursor-none"
+                                        ? "bg-primeColor hover:bg-black hover:text-white cursor-pointer"
+                                        : "bg-gray-500 hover:bg-gray-500 hover:text-gray-200 cursor-none"
                                         } w-full text-gray-200 text-base font-medium h-10 rounded-md hover:text-white duration-300`}
                                 >
                                     Create Account
