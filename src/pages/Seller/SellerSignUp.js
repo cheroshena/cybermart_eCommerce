@@ -396,7 +396,7 @@ const SellerSignUp = () => {
                                 </button>
                                 <p className="text-sm text-center font-titleFont font-medium">
                                     Don't have an Account?{" "}
-                                    <Link to="/signin">
+                                    <Link to="http://localhost:3001">
                                         <span className="hover:text-blue-600 duration-300">
                                             Sign in
                                         </span>
