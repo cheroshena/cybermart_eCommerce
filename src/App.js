@@ -24,6 +24,14 @@ import ProductDetails from "./pages/ProductDetails/ProductDetails";
 import Shop from "./pages/Shop/Shop";
 import SellerSignIn from "./pages/Seller/SellerSignIn";
 import SellerSignUp from "./pages/Seller/SellerSignUp";
+import SellerHeader from "./components/Seller/SellerHeader";
+import SellerSidebar from "./components/Seller/SellerSidebar";
+import Dashboard from "./pages/SellerDashboard/Dashboard";
+import ListProducts from "./pages/SellerDashboard/ListProducts";
+import AddProduct from "./pages/SellerDashboard/AddProduct";
+import { Sellerwallet } from "./pages/SellerDashboard/Sellerwallet";
+import SalesTracking from "./pages/SellerDashboard/SalesTracking";
+
 
 const Layout = () => {
   return (
@@ -35,6 +43,16 @@ const Layout = () => {
       <Outlet />
       <Footer />
       <FooterBottom />
+    </div>
+  );
+};
+
+const SellerLayout = () => {
+  return (
+    <div>
+      <SellerHeader />
+      <Outlet />
+      <SellerSidebar />
     </div>
   );
 };
@@ -53,6 +71,14 @@ const router = createBrowserRouter(
         <Route path="/product/:_id" element={<ProductDetails />}></Route>
         <Route path="/cart" element={<Cart />}></Route>
         <Route path="/paymentgateway" element={<Payment />}></Route>
+      </Route>
+       {/* ==================== Seller Dashboard =================== */}
+      <Route path="/" element={<SellerLayout />}>
+        <Route path="/dashboard" element={<Dashboard />}></Route>
+        <Route path="/listproducts" element={<ListProducts />}></Route>
+        <Route path="/addproducts" element={<AddProduct />}></Route>
+        <Route path="/salesTracking" element={<SalesTracking />}></Route>
+        <Route path="/Sellerwallet" element={<Sellerwallet />}></Route>
       </Route>
       <Route path="/signup" element={<SignUp />}></Route>
       <Route path="/signin" element={<SignIn />}></Route>
