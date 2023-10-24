@@ -50,9 +50,22 @@ const Layout = () => {
 const SellerLayout = () => {
   return (
     <div>
-      <SellerHeader />
-      <Outlet />
-      <SellerSidebar />
+      
+     
+      <div className="flex flex-row bg-neutral-100 h-screen w-screen overflow-hidden">
+      <SellerSidebar/>
+      <div className="flex-1">
+        <SellerHeader />
+        <div className="p-4">
+        <Outlet />
+        </div>
+      </div>
+      
+      
+      
+      </div>
+      
+      
     </div>
   );
 };
