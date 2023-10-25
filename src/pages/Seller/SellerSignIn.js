@@ -2,47 +2,77 @@ import React, { useState } from "react";
 import { BsCheckCircleFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { logoLight } from "../../assets/images";
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+
 
 const SellerSignIn = () => {
-    // ============= Initial State Start here =============
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    // ============= Initial State End here ===============
-    // ============= Error Msg Start here =================
+
+    const [formData, setFormData] = useState({
+        email: "",
+        password: "",
+    });
+    const navigate = useNavigate();
     const [errEmail, setErrEmail] = useState("");
     const [errPassword, setErrPassword] = useState("");
-
-    // ============= Error Msg End here ===================
     const [successMsg, setSuccessMsg] = useState("");
-    // ============= Event Handler Start here =============
-    const handleEmail = (e) => {
-        setEmail(e.target.value);
-        setErrEmail("");
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({
+            ...formData,
+            [name]: value,
+        });
     };
-    const handlePassword = (e) => {
-        setPassword(e.target.value);
-        setErrPassword("");
-    };
-    // ============= Event Handler End here ===============
-    const handleSignUp = (e) => {
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (!email) {
+        if (!formData.email) {
             setErrEmail("Enter your email");
+        } else {
+            setErrEmail("");
         }
 
-        if (!password) {
+        if (!formData.password) {
             setErrPassword("Create a password");
+        } else {
+            setErrPassword("");
         }
-        // ============== Getting the value ==============
+
+        const { email, password } = formData;
+
         if (email && password) {
             setSuccessMsg(
-                `Hello dear, Thank you for your attempt. We are processing to validate your access. Till then stay connected and additional assistance will be sent to you by your mail at ${email}`
+                `Hello dear, Thank you for your attempt. We are processing to validate your access.
+                 Till then stay connected and additional assistance will be sent to you by your email at 
+                 ${email}`
             );
-            setEmail("");
-            setPassword("");
+            setFormData({ email: "", password: "" });
+        }
+
+        if (!errEmail && !errPassword) {
+            try {
+                const response = await axios.post('http://127.0.0.1:8000/api/login', {
+                    email: formData.email,
+                    password: formData.password
+
+                });
+
+                if (response.status === 200) {
+                    navigate('/dashboard');
+                    console.log('Data sent successfully');
+                } else {
+                    console.error('Request was not successful');
+                }
+            } catch (error) {
+                console.error('Error sending data:', error);
+            }
         }
     };
+
+
+ 
     return (
         <div className="w-full h-screen flex items-center justify-center">
             <div className="w-1/2 hidden lgl:inline-flex h-full text-white">
@@ -128,7 +158,9 @@ const SellerSignIn = () => {
                         </Link>
                     </div>
                 ) : (
-                    <form className="w-full lgl:w-[450px] h-screen flex items-center justify-center">
+                    <form 
+                    onSubmit={handleSubmit}
+                    className="w-full lgl:w-[450px] h-screen flex items-center justify-center">
                         <div className="px-6 py-4 w-full h-[90%] flex flex-col justify-center overflow-y-scroll scrollbar-thin scrollbar-thumb-primeColor">
                             <h1 className="font-titleFont underline underline-offset-4 decoration-[1px] font-semibold text-3xl mdl:text-4xl mb-4">
                             Hey Seller! Sign in
@@ -140,8 +172,9 @@ const SellerSignIn = () => {
                                         Work Email
                                     </p>
                                     <input
-                                        onChange={handleEmail}
-                                        value={email}
+                                        onChange={handleInputChange}
+                                        value={formData.email}
+                                        name="email" 
                                         className="w-full h-8 placeholder:text-sm placeholder:tracking-wide px-4 text-base font-medium placeholder:font-normal rounded-md border-[1px] border-gray-400 outline-none"
                                         type="email"
                                         placeholder="john@workemail.com"
@@ -160,8 +193,9 @@ const SellerSignIn = () => {
                                         Password
                                     </p>
                                     <input
-                                        onChange={handlePassword}
-                                        value={password}
+                                        onChange={handleInputChange}
+                                        value={formData.password}
+                                        name="password"
                                         className="w-full h-8 placeholder:text-sm placeholder:tracking-wide px-4 text-base font-medium placeholder:font-normal rounded-md border-[1px] border-gray-400 outline-none"
                                         type="password"
                                         placeholder="Create password"
@@ -175,7 +209,7 @@ const SellerSignIn = () => {
                                 </div>
 
                                 <button
-                                    onClick={handleSignUp}
+                                    type="submit"
                                     className="bg-primeColor hover:bg-black text-gray-200 hover:text-white cursor-pointer w-full text-base font-medium h-10 rounded-md  duration-300"
                                 >
                                     Sign In
