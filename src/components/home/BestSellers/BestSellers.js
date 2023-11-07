@@ -19,6 +19,9 @@ const BestSellers = () => {
           productName="Flower Base"
           price="35.00"
           color="Blank and White"
+
+          shopName="Silva's Market"
+          location="Wennappuwa"
           badge={true}
           des="Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic excepturi quibusdam odio deleniti reprehenderit facilis."
         />
@@ -28,7 +31,8 @@ const BestSellers = () => {
           productName="New Backpack"
           price="180.00"
           color="Gray"
-          badge={false}
+          badge={false} shopName="Silva's Market"
+          location="Wennappuwa"
           des="Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic excepturi quibusdam odio deleniti reprehenderit facilis."
         />
         <Product
@@ -38,6 +42,8 @@ const BestSellers = () => {
           price="25.00"
           color="Mixed"
           badge={true}
+          shopName="Silva's Market"
+          location="Wennappuwa"
           des="Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic excepturi quibusdam odio deleniti reprehenderit facilis."
         />
         <Product
@@ -46,7 +52,8 @@ const BestSellers = () => {
           productName="Travel Bag"
           price="220.00"
           color="Black"
-          badge={false}
+          badge={false} shopName="Silva's Market"
+          location="Wennappuwa"
           des="Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic excepturi quibusdam odio deleniti reprehenderit facilis."
         />
       </div>

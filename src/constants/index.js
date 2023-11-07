@@ -51,6 +51,8 @@ export const SplOfferData = [
     price: "35.00",
     color: "Blank and White",
     badge: true,
+    shopName:"silva's Market",
+    location:"Wennappuwa",
     des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic excepturi quibusdam odio deleniti reprehenderit facilis.",
   },
   {
@@ -60,6 +62,9 @@ export const SplOfferData = [
     price: "180.00",
     color: "Gray",
     badge: true,
+    shopName:"silva's Market",
+    location:"Wennappuwa",
+
     des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic excepturi quibusdam odio deleniti reprehenderit facilis.",
   },
   {
@@ -69,6 +74,9 @@ export const SplOfferData = [
     price: "25.00",
     color: "Mixed",
     badge: true,
+    shopName:"silva's Market",
+    location:"Wennappuwa",
+
     des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic excepturi quibusdam odio deleniti reprehenderit facilis.",
   },
   {
@@ -78,6 +86,9 @@ export const SplOfferData = [
     price: "220.00",
     color: "Black",
     badge: true,
+    shopName:"silva's Market",
+    location:"Wennappuwa",
+
     des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic excepturi quibusdam odio deleniti reprehenderit facilis.",
   },
 ];
@@ -93,6 +104,9 @@ export const paginationItems = [
     price: "35.00",
     color: "Blank and White",
     badge: true,
+    shopName:"silva's Market",
+    location:"Wennappuwa",
+
     des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic excepturi quibusdam odio deleniti reprehenderit facilis.",
   },
   {
@@ -102,6 +116,8 @@ export const paginationItems = [
     price: "180.00",
     color: "Gray",
     badge: true,
+    shopName:"silva's Market",
+    location:"Wennappuwa",
     des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic excepturi quibusdam odio deleniti reprehenderit facilis.",
   },
   {
@@ -111,6 +127,8 @@ export const paginationItems = [
     price: "25.00",
     color: "Mixed",
     badge: true,
+    shopName:"silva's Market",
+    location:"Wennappuwa",
     des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic excepturi quibusdam odio deleniti reprehenderit facilis.",
   },
   {
@@ -120,6 +138,8 @@ export const paginationItems = [
     price: "220.00",
     color: "Black",
     badge: true,
+    shopName:"silva's Market",
+    location:"Wennappuwa",
     des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic excepturi quibusdam odio deleniti reprehenderit facilis.",
   },
   {
@@ -129,6 +149,8 @@ export const paginationItems = [
     price: "35.00",
     color: "Blank and White",
     badge: true,
+    shopName:"silva's Market",
+    location:"Wennappuwa",
     des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic excepturi quibusdam odio deleniti reprehenderit facilis.",
   },
   {
@@ -138,6 +160,8 @@ export const paginationItems = [
     price: "180.00",
     color: "Gray",
     badge: false,
+    shopName:"silva's Market",
+    location:"Wennappuwa",
     des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic excepturi quibusdam odio deleniti reprehenderit facilis.",
   },
   {
@@ -147,6 +171,8 @@ export const paginationItems = [
     price: "25.00",
     color: "Mixed",
     badge: true,
+    shopName:"silva's Market",
+    location:"Wennappuwa",
     des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic excepturi quibusdam odio deleniti reprehenderit facilis.",
   },
   {
@@ -156,6 +182,8 @@ export const paginationItems = [
     price: "220.00",
     color: "Black",
     badge: false,
+    shopName:"silva's Market",
+    location:"Wennappuwa",
     des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic excepturi quibusdam odio deleniti reprehenderit facilis.",
   },
   {
@@ -165,6 +193,8 @@ export const paginationItems = [
     price: "44.00",
     color: "Black",
     badge: true,
+    shopName:"silva's Market",
+    location:"Wennappuwa",
     des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic excepturi quibusdam odio deleniti reprehenderit facilis.",
   },
   {
@@ -174,6 +204,8 @@ export const paginationItems = [
     price: "250.00",
     color: "Black",
     badge: true,
+    shopName:"silva's Market",
+    location:"Wennappuwa",
     des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic excepturi quibusdam odio deleniti reprehenderit facilis.",
   },
   {
@@ -183,6 +215,8 @@ export const paginationItems = [
     price: "80.00",
     color: "Mixed",
     badge: true,
+    shopName:"silva's Market",
+    location:"Wennappuwa",
     des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic excepturi quibusdam odio deleniti reprehenderit facilis.",
   },
   {
@@ -192,6 +226,8 @@ export const paginationItems = [
     price: "60.00",
     color: "Mixed",
     badge: false,
+    shopName:"silva's Market",
+    location:"Wennappuwa",
     des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic excepturi quibusdam odio deleniti reprehenderit facilis.",
   },
   {
@@ -201,6 +237,8 @@ export const paginationItems = [
     price: "60.00",
     color: "Mixed",
     badge: false,
+    shopName:"silva's Market",
+    location:"Wennappuwa",
     des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic excepturi quibusdam odio deleniti reprehenderit facilis.",
   },
 
@@ -211,6 +249,8 @@ export const paginationItems = [
     price: "250.00",
     color: "Black",
     badge: true,
+    shopName:"silva's Market",
+    location:"Wennappuwa",
     des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic excepturi quibusdam odio deleniti reprehenderit facilis.",
   },
   {
@@ -220,6 +260,8 @@ export const paginationItems = [
     price: "60.00",
     color: "Mixed",
     badge: false,
+    shopName:"silva's Market",
+    location:"Wennappuwa",
     des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic excepturi quibusdam odio deleniti reprehenderit facilis.",
   },
   {
@@ -229,6 +271,8 @@ export const paginationItems = [
     price: "250.00",
     color: "Black",
     badge: true,
+    shopName:"silva's Market",
+    location:"Wennappuwa",
     des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic excepturi quibusdam odio deleniti reprehenderit facilis.",
   },
   {
@@ -238,6 +282,8 @@ export const paginationItems = [
     price: "220.00",
     color: "Black",
     badge: false,
+    shopName:"silva's Market",
+    location:"Wennappuwa",
     des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic excepturi quibusdam odio deleniti reprehenderit facilis.",
   },
   {
@@ -247,6 +293,8 @@ export const paginationItems = [
     price: "44.00",
     color: "Black",
     badge: true,
+    shopName:"silva's Market",
+    location:"Wennappuwa",
     des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic excepturi quibusdam odio deleniti reprehenderit facilis.",
   },
   {
@@ -256,6 +304,8 @@ export const paginationItems = [
     price: "250.00",
     color: "Black",
     badge: true,
+    shopName:"silva's Market",
+    location:"Wennappuwa",
     des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic excepturi quibusdam odio deleniti reprehenderit facilis.",
   },
   {
@@ -265,6 +315,8 @@ export const paginationItems = [
     price: "80.00",
     color: "Mixed",
     badge: true,
+    shopName:"silva's Market",
+    location:"Wennappuwa",
     des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic excepturi quibusdam odio deleniti reprehenderit facilis.",
   },
   {
@@ -274,6 +326,8 @@ export const paginationItems = [
     price: "25.00",
     color: "Mixed",
     badge: true,
+    shopName:"silva's Market",
+    location:"Wennappuwa",
     des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic excepturi quibusdam odio deleniti reprehenderit facilis.",
   },
   {
@@ -283,6 +337,8 @@ export const paginationItems = [
     price: "220.00",
     color: "Black",
     badge: true,
+    shopName:"silva's Market",
+    location:"Wennappuwa",
     des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic excepturi quibusdam odio deleniti reprehenderit facilis.",
   },
   {
@@ -292,6 +348,8 @@ export const paginationItems = [
     price: "35.00",
     color: "Blank and White",
     badge: true,
+    shopName:"silva's Market",
+    location:"Wennappuwa",
     des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic excepturi quibusdam odio deleniti reprehenderit facilis.",
   },
   {
@@ -301,6 +359,8 @@ export const paginationItems = [
     price: "35.00",
     color: "Blank and White",
     badge: true,
+    shopName:"silva's Market",
+    location:"Wennappuwa",
     des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic excepturi quibusdam odio deleniti reprehenderit facilis.",
   },
   {
@@ -310,6 +370,8 @@ export const paginationItems = [
     price: "180.00",
     color: "Gray",
     badge: true,
+    shopName:"silva's Market",
+    location:"Wennappuwa",
     des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic excepturi quibusdam odio deleniti reprehenderit facilis.",
   },
   {
@@ -319,6 +381,8 @@ export const paginationItems = [
     price: "25.00",
     color: "Mixed",
     badge: true,
+    shopName:"silva's Market",
+    location:"Wennappuwa",
     des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic excepturi quibusdam odio deleniti reprehenderit facilis.",
   },
   {
@@ -328,6 +392,8 @@ export const paginationItems = [
     price: "220.00",
     color: "Black",
     badge: true,
+    shopName:"silva's Market",
+    location:"Wennappuwa",
     des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic excepturi quibusdam odio deleniti reprehenderit facilis.",
   },
   {
@@ -337,6 +403,8 @@ export const paginationItems = [
     price: "35.00",
     color: "Blank and White",
     badge: true,
+    shopName:"silva's Market",
+    location:"Wennappuwa",
     des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic excepturi quibusdam odio deleniti reprehenderit facilis.",
   },
   {
@@ -355,6 +423,8 @@ export const paginationItems = [
     price: "25.00",
     color: "Mixed",
     badge: true,
+    shopName:"silva's Market",
+    location:"Wennappuwa",
     des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic excepturi quibusdam odio deleniti reprehenderit facilis.",
   },
   {
@@ -364,6 +434,8 @@ export const paginationItems = [
     price: "220.00",
     color: "Black",
     badge: false,
+    shopName:"silva's Market",
+    location:"Wennappuwa",
     des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic excepturi quibusdam odio deleniti reprehenderit facilis.",
   },
   {
@@ -373,6 +445,8 @@ export const paginationItems = [
     price: "44.00",
     color: "Black",
     badge: true,
+    shopName:"silva's Market",
+    location:"Wennappuwa",
     des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic excepturi quibusdam odio deleniti reprehenderit facilis.",
   },
   {
@@ -382,6 +456,8 @@ export const paginationItems = [
     price: "250.00",
     color: "Black",
     badge: true,
+    shopName:"silva's Market",
+    location:"Wennappuwa",
     des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic excepturi quibusdam odio deleniti reprehenderit facilis.",
   },
   {
@@ -391,6 +467,8 @@ export const paginationItems = [
     price: "80.00",
     color: "Mixed",
     badge: true,
+    shopName:"silva's Market",
+    location:"Wennappuwa",
     des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic excepturi quibusdam odio deleniti reprehenderit facilis.",
   },
   {
@@ -400,6 +478,8 @@ export const paginationItems = [
     price: "60.00",
     color: "Mixed",
     badge: false,
+    shopName:"silva's Market",
+    location:"Wennappuwa",
     des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic excepturi quibusdam odio deleniti reprehenderit facilis.",
   },
   {
@@ -409,6 +489,8 @@ export const paginationItems = [
     price: "60.00",
     color: "Mixed",
     badge: false,
+    shopName:"silva's Market",
+    location:"Wennappuwa",
     des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic excepturi quibusdam odio deleniti reprehenderit facilis.",
   },
   {
@@ -418,6 +500,8 @@ export const paginationItems = [
     price: "60.00",
     color: "Mixed",
     badge: false,
+    shopName:"silva's Market",
+    location:"Wennappuwa",
     des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic excepturi quibusdam odio deleniti reprehenderit facilis.",
   },
   {
@@ -427,6 +511,8 @@ export const paginationItems = [
     price: "250.00",
     color: "Black",
     badge: true,
+    shopName:"silva's Market",
+    location:"Wennappuwa",
     des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic excepturi quibusdam odio deleniti reprehenderit facilis.",
   },
   {
@@ -436,6 +522,8 @@ export const paginationItems = [
     price: "220.00",
     color: "Black",
     badge: false,
+    shopName:"silva's Market",
+    location:"Wennappuwa",
     des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic excepturi quibusdam odio deleniti reprehenderit facilis.",
   },
   {
@@ -445,6 +533,8 @@ export const paginationItems = [
     price: "44.00",
     color: "Black",
     badge: true,
+    shopName:"silva's Market",
+    location:"Wennappuwa",
     des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic excepturi quibusdam odio deleniti reprehenderit facilis.",
   },
   {
@@ -454,6 +544,8 @@ export const paginationItems = [
     price: "250.00",
     color: "Black",
     badge: true,
+    shopName:"silva's Market",
+    location:"Wennappuwa",
     des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic excepturi quibusdam odio deleniti reprehenderit facilis.",
   },
   {
@@ -463,6 +555,8 @@ export const paginationItems = [
     price: "80.00",
     color: "Mixed",
     badge: true,
+    shopName:"silva's Market",
+    location:"Wennappuwa",
     des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic excepturi quibusdam odio deleniti reprehenderit facilis.",
   },
   {
@@ -472,6 +566,8 @@ export const paginationItems = [
     price: "25.00",
     color: "Mixed",
     badge: true,
+    shopName:"silva's Market",
+    location:"Wennappuwa",
     des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic excepturi quibusdam odio deleniti reprehenderit facilis.",
   },
   {
@@ -481,6 +577,8 @@ export const paginationItems = [
     price: "220.00",
     color: "Black",
     badge: true,
+    shopName:"silva's Market",
+    location:"Wennappuwa",
     des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic excepturi quibusdam odio deleniti reprehenderit facilis.",
   },
   {
@@ -490,6 +588,8 @@ export const paginationItems = [
     price: "35.00",
     color: "Blank and White",
     badge: true,
+    shopName:"silva's Market",
+    location:"Wennappuwa",
     des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic excepturi quibusdam odio deleniti reprehenderit facilis.",
   },
   {
@@ -499,6 +599,8 @@ export const paginationItems = [
     price: "35.00",
     color: "Blank and White",
     badge: true,
+    shopName:"silva's Market",
+    location:"Wennappuwa",
     des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic excepturi quibusdam odio deleniti reprehenderit facilis.",
   },
 ];

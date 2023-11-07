@@ -31,6 +31,7 @@ import ListProducts from "./pages/SellerDashboard/ListProducts";
 import AddProduct from "./pages/SellerDashboard/AddProduct";
 import { Sellerwallet } from "./pages/SellerDashboard/Sellerwallet";
 import SalesTracking from "./pages/SellerDashboard/SalesTracking";
+import SalesOwner from "./pages/Sales/SalesOwner";
 
 
 const Layout = () => {
@@ -76,6 +77,7 @@ const router = createBrowserRouter(
         {/* ==================== Header Navlink Start here =================== */}
         <Route index element={<Home />}></Route>
         <Route path="/shop" element={<Shop />}></Route>
+        <Route path="/salesowner" element={<SalesOwner />}></Route>
         <Route path="/about" element={<About />}></Route>
         <Route path="/contact" element={<Contact />}></Route>
         <Route path="/journal" element={<Journal />}></Route>

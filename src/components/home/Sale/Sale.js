@@ -7,6 +7,7 @@ import {
 } from "../../../assets/images/index";
 import Image from "../../designLayouts/Image";
 
+
 const Sale = () => {
   return (
     <div className="py-20 flex flex-col md:flex-row items-center justify-between gap-4 lg:gap-10">

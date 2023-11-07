@@ -6,12 +6,19 @@ const ProductInfo = ({ productInfo }) => {
   const dispatch = useDispatch();
   return (
     <div className="flex flex-col gap-5">
+    <p className="text-xl font-semibold">{productInfo.shopName}</p>
       <h2 className="text-4xl font-semibold">{productInfo.productName}</h2>
+      
       <p className="text-xl font-semibold">${productInfo.price}</p>
       <p className="text-base text-gray-600">{productInfo.des}</p>
       <p className="text-sm">Be the first to leave a review.</p>
       <p className="font-medium text-lg">
         <span className="font-normal">Colors:</span> {productInfo.color}
+        
+      </p>
+      <p className="font-medium text-lg">
+        <span className="font-normal">Location:</span> {productInfo.location}
+        
       </p>
       <button
         onClick={() =>
@@ -24,6 +31,7 @@ const ProductInfo = ({ productInfo }) => {
               badge: productInfo.badge,
               price: productInfo.price,
               colors: productInfo.color,
+              
             })
           )
         }
