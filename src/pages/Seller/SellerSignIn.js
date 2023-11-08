@@ -16,6 +16,7 @@ const SellerSignIn = () => {
     const [errEmail, setErrEmail] = useState("");
     const [errPassword, setErrPassword] = useState("");
     const [successMsg, setSuccessMsg] = useState("");
+    const baseUrl =('http://127.0.0.1:8000/api/seller-login');
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -27,50 +28,42 @@ const SellerSignIn = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
-        if (!formData.email) {
-            setErrEmail("Enter your email");
+    
+        if (!formData.email || !formData.password) {
+            setErrEmail(!formData.email ? "Enter your email" : "");
+            setErrPassword(!formData.password ? "Enter your password" : "");
         } else {
             setErrEmail("");
-        }
-
-        if (!formData.password) {
-            setErrPassword("Create a password");
-        } else {
             setErrPassword("");
         }
-
+    
         const { email, password } = formData;
-
+    
         if (email && password) {
-            setSuccessMsg(
-                `Hello dear, Thank you for your attempt. We are processing to validate your access.
-                 Till then stay connected and additional assistance will be sent to you by your email at 
-                 ${email}`
-            );
-            setFormData({ email: "", password: "" });
-        }
-
-        if (!errEmail && !errPassword) {
             try {
-                const response = await axios.post('http://127.0.0.1:8000/api/login', {
+                const response = await axios.post(baseUrl, {
                     email: formData.email,
                     password: formData.password
-
                 });
-
+    
                 if (response.status === 200) {
-                    navigate('/dashboard');
+                   
+                    if (response.data.token) {
+                        navigate('/dashboard');
+                    } else {
+                        setSuccessMsg(response.data.message);
+                    }
+                    
                     console.log('Data sent successfully');
                 } else {
-                    console.error('Request was not successful');
+                    setSuccessMsg('Request was not successful');
                 }
             } catch (error) {
+                setSuccessMsg('Error sending data');
                 console.error('Error sending data:', error);
             }
         }
     };
-
 
  
     return (

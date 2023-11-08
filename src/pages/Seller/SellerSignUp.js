@@ -29,7 +29,7 @@ const SellerSignUp = () => {
       const [errAddress, setErrAddress] = useState("");
       const [errCity, setErrCity] = useState("");
       const [errInvitecode, setErrInvitecode] = useState("");
-     const baseUrl =('http://127.0.0.1:8000/api/register');
+      const baseUrl =('http://127.0.0.1:8000/api/seller-sign-up');
 
       const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -97,16 +97,27 @@ const SellerSignUp = () => {
         ) {
           try {
             const response = await axios.post(baseUrl, {
-            name: formData.clientName,
+            // name: formData.clientName,
+            // email: formData.email,
+            // phonenumber: formData.phone,
+            // password: formData.password,
+            // Address: formData.Address,
+            // city: formData.city,
+            // Invitecode:formData.Invitecode
+            // });
+            headers: {
+              "Content-Type": "application/json",
+            },
+            clientName: formData.clientName,
             email: formData.email,
-            phonenumber: formData.phone,
+            phone: formData.phone,
             password: formData.password,
             Address: formData.Address,
             city: formData.city,
-            Invitecode:formData.Invitecode
-            });
+            Invitecode: formData.Invitecode,
+          });
 
-            if (response.status === 200) {
+            if (response.status === 201) {
                 navigate('/SellerSignIn');
               console.log('Data sent successfully');
             } else {
