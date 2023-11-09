@@ -1,9 +1,13 @@
 import { Navigate } from "react-router-dom";
 
 export const PrivateRoutes = ({ children }) => {
-const getTokenFromLocalStorage = JSON.parse(localStorage.getItem(
-"customer"))
-console.log(getTokenFromLocalStorage?.token);
-return getTokenFromLocalStorage?.token !== undefined ? children : (<
-Navigate to='/login' replace={true} />)
-}
+
+    const storedToken = localStorage.getItem('token');
+    console.log('Stored Token:',storedToken);
+
+    return storedToken ? (
+        children
+    ):(
+        <Navigate to = '/' replace={true}/>
+    );
+};

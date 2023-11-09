@@ -33,6 +33,8 @@ import AddProduct from "./pages/SellerDashboard/AddProduct";
 import { Sellerwallet } from "./pages/SellerDashboard/Sellerwallet";
 import SalesTracking from "./pages/SellerDashboard/SalesTracking";
 import SalesOwner from "./pages/Sales/SalesOwner";
+import { PrivateRoutes } from "./Route/privateroute";
+import { OpenRoutes } from "./Route/openroute";
 
 
 const Layout = () => {
@@ -81,29 +83,33 @@ const router = createBrowserRouter(
         {/* ==================== Header Navlink End here ===================== */}
         <Route path="/offer" element={<Offer />}></Route>
         <Route path="/product/:_id" element={<ProductDetails />}></Route>
-        <Route path="/cart" element={<Cart />}></Route>
-        <Route path="/paymentgateway" element={<Payment />}></Route>
+        <Route path="/cart" element={<PrivateRoutes><Cart /></PrivateRoutes>}></Route>
+        <Route path="/paymentgateway" element={<PrivateRoutes><Payment /></PrivateRoutes>}></Route>
       </Route>
        {/* ==================== Seller Dashboard =================== */}
-      <Route path="/" element={<SellerLayout />}>
-        <Route path="/dashboard" element={<Dashboard />}></Route>
-        <Route path="/listproducts" element={<ListProducts />}></Route>
-        <Route path="/addproducts" element={<AddProduct />}></Route>
-        <Route path="/salesTracking" element={<SalesTracking />}></Route>
-        <Route path="/Sellerwallet" element={<Sellerwallet />}></Route>
+        <Route path="/" element={<SellerLayout />}>
+        <Route path="/dashboard" element={<PrivateRoutes><Dashboard /></PrivateRoutes>}></Route>
+        <Route path="/listproducts" element={<PrivateRoutes><ListProducts /></PrivateRoutes>}></Route>
+        <Route path="/addproducts" element={<PrivateRoutes><AddProduct /></PrivateRoutes>}></Route>
+        <Route path="/salesTracking" element={<PrivateRoutes><SalesTracking /></PrivateRoutes>}></Route>
+        <Route path="/Sellerwallet" element={<PrivateRoutes><Sellerwallet /></PrivateRoutes>}></Route>
       </Route>
       <Route path="/signup" element={<SignUp />}></Route>
       <Route path="/signin" element={<SignIn />}></Route>
       <Route path="/sellersignup" element={<SellerSignUp />}></Route>
       <Route path="/sellersignin" element={<SellerSignIn />}></Route>
+    
     </Route>
+// <PrivateRoutes></PrivateRoutes>
   )
 );
 
 function App() {
   return (
     <div className="font-bodyFont">
-      <RouterProvider router={router} />
+      <RouterProvider router={router} >
+        <Outlet />
+        </RouterProvider>
     </div>
   );
 }
