@@ -52,7 +52,8 @@ const BestSellers = () => {
           productName="Travel Bag"
           price="220.00"
           color="Black"
-          badge={false} shopName="Silva's Market"
+          badge={false} 
+          shopName="Silva's Market"
           location="Wennappuwa"
           des="Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic excepturi quibusdam odio deleniti reprehenderit facilis."
         />

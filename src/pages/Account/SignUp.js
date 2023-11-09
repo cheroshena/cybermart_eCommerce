@@ -2,133 +2,155 @@ import React, { useState } from "react";
 import { BsCheckCircleFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { logoLight } from "../../assets/images";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-const SignUp = () => {
-  // ============= Initial State Start here =============
-  const [clientName, setClientName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [password, setPassword] = useState("");
-  const [address, setAddress] = useState("");
-  const [city, setCity] = useState("");
-  const [country, setCountry] = useState("");
-  const [zip, setZip] = useState("");
+const SellerSignUp = () => {
+  const [formData, setFormData] = useState({
+    clientName: "",
+    email: "",
+    phone: "",
+    password: "",
+    address: "",
+    city: "",
+    Invitecode: "",
+  });
+  const navigate = useNavigate();
   const [checked, setChecked] = useState(false);
-  // ============= Initial State End here ===============
-  // ============= Error Msg Start here =================
-  const [errClientName, setErrClientName] = useState("");
+  const [successMsg, setSuccessMsg] = useState("");
+  const [errClientName, setErrClientName] = useState(""); // Declare and initialize error variables
   const [errEmail, setErrEmail] = useState("");
   const [errPhone, setErrPhone] = useState("");
   const [errPassword, setErrPassword] = useState("");
-  const [errAddress, setErrAddress] = useState("");
+  const [erraddress, setErraddress] = useState("");
   const [errCity, setErrCity] = useState("");
-  const [errCountry, setErrCountry] = useState("");
-  const [errZip, setErrZip] = useState("");
-  // ============= Error Msg End here ===================
-  const [successMsg, setSuccessMsg] = useState("");
-  // ============= Event Handler Start here =============
-  const handleName = (e) => {
-    setClientName(e.target.value);
-    setErrClientName("");
-  };
-  const handleEmail = (e) => {
-    setEmail(e.target.value);
-    setErrEmail("");
-  };
-  const handlePhone = (e) => {
-    setPhone(e.target.value);
-    setErrPhone("");
-  };
-  const handlePassword = (e) => {
-    setPassword(e.target.value);
-    setErrPassword("");
-  };
-  const handleAddress = (e) => {
-    setAddress(e.target.value);
-    setErrAddress("");
-  };
-  const handleCity = (e) => {
-    setCity(e.target.value);
-    setErrCity("");
-  };
-  const handleCountry = (e) => {
-    setCountry(e.target.value);
-    setErrCountry("");
-  };
-  const handleZip = (e) => {
-    setZip(e.target.value);
-    setErrZip("");
-  };
-  // ============= Event Handler End here ===============
-  // ================= Email Validation start here =============
-  const EmailValidation = (email) => {
-    return String(email)
-      .toLowerCase()
-      .match(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i);
-  };
-  // ================= Email Validation End here ===============
+  const [errInvitecode, setErrInvitecode] = useState("");
+  const baseUrl = "http://127.0.0.1:8000/api/sign-up";
 
-  const handleSignUp = (e) => {
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (checked) {
-      if (!clientName) {
-        setErrClientName("Enter your name");
-      }
-      if (!email) {
-        setErrEmail("Enter your email");
-      } else {
-        if (!EmailValidation(email)) {
-          setErrEmail("Enter a Valid email");
+
+    // Validation logic here, set error messages if validation fails
+    if (!formData.clientName) {
+      setErrClientName("Client name is required");
+    } else {
+      setErrClientName("");
+    }
+
+    if (!formData.email) {
+      setErrEmail("Email is required");
+    } else {
+      setErrEmail("");
+    }
+
+    if (!formData.phone) {
+      setErrPhone("Phone number is required");
+    } else {
+      setErrPhone("");
+    }
+
+    if (!formData.password) {
+      setErrPassword("Password is required");
+    } else {
+      setErrPassword("");
+    }
+
+    if (!formData.address) {
+      setErraddress("address is required");
+    } else {
+      setErraddress("");
+    }
+
+    if (!formData.city) {
+      setErrCity("City is required");
+    } else {
+      setErrCity("");
+    }
+
+    if (!formData.Invitecode) {
+      setErrInvitecode("Invitecode code is required");
+    } else {
+      setErrInvitecode("");
+    }
+
+    // Check if all fields are valid before making the API call
+    if (
+      !errClientName &&
+      !errEmail &&
+      !errPhone &&
+      !errPassword &&
+      !erraddress &&
+      !errCity &&
+      !errInvitecode
+    ) {
+      try {
+        // const response = await axios.post(baseUrl, {
+        // name: formData.clientName,
+        // email: formData.email,
+        // phonenumber: formData.phone,
+        // password: formData.password,
+        // address: formData.address,
+        // city: formData.city,
+        // Invitecode:formData.Invitecode
+        // });
+
+        const response = await axios.post(baseUrl, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          clientName: formData.clientName,
+          email: formData.email,
+          phone: formData.phone,
+          password: formData.password,
+          address: formData.address,
+          city: formData.city,
+          Invitecode: formData.Invitecode,
+        });
+<<<<<<< HEAD
+  
+        //console.log("Response data: ", response);
+
+        if (response.status === 201) {
+          const token = response.data.token; // Change 'token' to the key used in the response
+          if (token) {
+          localStorage.setItem('token', token); // Save the token in localStorage
         }
-      }
-      if (!phone) {
-        setErrPhone("Enter your phone number");
-      }
-      if (!password) {
-        setErrPassword("Create a password");
-      } else {
-        if (password.length < 6) {
-          setErrPassword("Passwords must be at least 6 characters");
+          navigate("/SignIn");
+          setSuccessMsg("Registered!");
+          console.log("Buyer created successfully");
+        } else {
+          console.error("Request was not successful");
         }
-      }
-      if (!address) {
-        setErrAddress("Enter your address");
-      }
-      if (!city) {
-        setErrCity("Enter your city name");
-      }
-      if (!country) {
-        setErrCountry("Enter the Introducer ID");
-      }
-      if (!zip) {
-        setErrZip("Enter the zip code of your area");
-      }
-      // ============== Getting the value ==============
-      if (
-        clientName &&
-        email &&
-        EmailValidation(email) &&
-        password &&
-        password.length >= 6 &&
-        address &&
-        city &&
-        country &&
-        zip
-      ) {
-        setSuccessMsg(
-          `Hello dear ${clientName}, Welcome you to OREBI Admin panel. We received your Sign up request. We are processing to validate your access. Till then stay connected and additional assistance will be sent to you by your mail at ${email}`
-        );
-        setClientName("");
-        setEmail("");
-        setPhone("");
-        setPassword("");
-        setAddress("");
-        setCity("");
-        setCountry("");
-        setZip("");
+=======
+
+        //console.log("Response data: ", response);
+
+        if (response.status === 201) {
+          navigate("/SignIn");
+          setSuccessMsg("Registered!");
+          console.log("Buyer created successfully");
+        } else {
+          console.error("Request was not successful");
+        }
+>>>>>>> eb4696e058bd5c06c0725f43b892361405494fcc
+      } catch (error) {
+        console.error("Error sending data:", error);
+
+        if (error.response) {
+          console.error("Error response from backend: ", error.response.data);
+        }
       }
     }
   };
+
   return (
     <div className="w-full h-screen flex items-center justify-start">
       <div className="w-1/2 hidden lgl:inline-flex h-full text-white">
@@ -205,47 +227,32 @@ const SignUp = () => {
             </p>
             <Link to="/signin">
               <button
-                className="w-full h-10 bg-primeColor rounded-md text-gray-200 text-base font-titleFont font-semibold 
-            tracking-wide hover:bg-black hover:text-white duration-300"
+                className="w-full h-10 bg-primeColor rounded-md text-gray-200 text-base font-titleFont font-semibold
+              tracking-wide hover:bg-black hover:text-white duration-300"
               >
                 Sign in
               </button>
             </Link>
           </div>
         ) : (
-          <form className="w-full lgl:w-[500px] h-screen flex items-center justify-center">
+          <form
+            onSubmit={handleSubmit} // Handle form submission
+            className="w-full lgl:w-[500px] h-screen flex items-center justify-center"
+          >
             <div className="px-6 py-4 w-full h-[96%] flex flex-col justify-start overflow-y-scroll scrollbar-thin scrollbar-thumb-primeColor">
               <h1 className="font-titleFont underline underline-offset-4 decoration-[1px] font-semibold text-2xl mdl:text-3xl mb-4">
                 Create your account
               </h1>
               <div className="flex flex-col gap-3">
-                {/*Introducer ID */}
-                <div className="flex flex-col gap-.5">
-                  <p className="font-titleFont text-base font-semibold text-gray-600">
-                    Introducer ID
-                  </p>
-                  <input
-                    onChange={handleCountry}
-                    value={country}
-                    className="w-full h-8 placeholder:text-sm placeholder:tracking-wide px-4 text-base font-medium placeholder:font-normal rounded-md border-[1px] border-gray-400 outline-none"
-                    type="text"
-                    placeholder="eg. 998272791"
-                  />
-                  {errCountry && (
-                    <p className="text-sm text-red-500 font-titleFont font-semibold px-4">
-                      <span className="font-bold italic mr-1">!</span>
-                      {errCountry}
-                    </p>
-                  )}
-                </div>
-                {/* client name */}
+                {/* Client name */}
                 <div className="flex flex-col gap-.5">
                   <p className="font-titleFont text-base font-semibold text-gray-600">
                     Full Name
                   </p>
                   <input
-                    onChange={handleName}
-                    value={clientName}
+                    onChange={handleInputChange}
+                    value={formData.clientName}
+                    name="clientName"
                     className="w-full h-8 placeholder:text-sm placeholder:tracking-wide px-4 text-base font-medium placeholder:font-normal rounded-md border-[1px] border-gray-400 outline-none"
                     type="text"
                     placeholder="eg. John Doe"
@@ -257,14 +264,16 @@ const SignUp = () => {
                     </p>
                   )}
                 </div>
+
                 {/* Email */}
                 <div className="flex flex-col gap-.5">
                   <p className="font-titleFont text-base font-semibold text-gray-600">
                     Work Email
                   </p>
                   <input
-                    onChange={handleEmail}
-                    value={email}
+                    onChange={handleInputChange}
+                    value={formData.email}
+                    name="email"
                     className="w-full h-8 placeholder:text-sm placeholder:tracking-wide px-4 text-base font-medium placeholder:font-normal rounded-md border-[1px] border-gray-400 outline-none"
                     type="email"
                     placeholder="john@workemail.com"
@@ -276,14 +285,16 @@ const SignUp = () => {
                     </p>
                   )}
                 </div>
+
                 {/* Phone Number */}
                 <div className="flex flex-col gap-.5">
                   <p className="font-titleFont text-base font-semibold text-gray-600">
                     Phone Number
                   </p>
                   <input
-                    onChange={handlePhone}
-                    value={phone}
+                    onChange={handleInputChange}
+                    value={formData.phone}
+                    name="phone"
                     className="w-full h-8 placeholder:text-sm placeholder:tracking-wide px-4 text-base font-medium placeholder:font-normal rounded-md border-[1px] border-gray-400 outline-none"
                     type="text"
                     placeholder="008801234567891"
@@ -295,14 +306,16 @@ const SignUp = () => {
                     </p>
                   )}
                 </div>
+
                 {/* Password */}
                 <div className="flex flex-col gap-.5">
                   <p className="font-titleFont text-base font-semibold text-gray-600">
                     Password
                   </p>
                   <input
-                    onChange={handlePassword}
-                    value={password}
+                    onChange={handleInputChange}
+                    value={formData.password}
+                    name="password"
                     className="w-full h-8 placeholder:text-sm placeholder:tracking-wide px-4 text-base font-medium placeholder:font-normal rounded-md border-[1px] border-gray-400 outline-none"
                     type="password"
                     placeholder="Create password"
@@ -314,33 +327,37 @@ const SignUp = () => {
                     </p>
                   )}
                 </div>
-                {/* Address */}
+
+                {/* address */}
                 <div className="flex flex-col gap-.5">
                   <p className="font-titleFont text-base font-semibold text-gray-600">
-                    Address
+                    address
                   </p>
                   <input
-                    onChange={handleAddress}
-                    value={address}
+                    onChange={handleInputChange}
+                    value={formData.address}
+                    name="address"
                     className="w-full h-8 placeholder:text-sm placeholder:tracking-wide px-4 text-base font-medium placeholder:font-normal rounded-md border-[1px] border-gray-400 outline-none"
                     type="text"
                     placeholder="road-001, house-115, example area"
                   />
-                  {errAddress && (
+                  {erraddress && (
                     <p className="text-sm text-red-500 font-titleFont font-semibold px-4">
                       <span className="font-bold italic mr-1">!</span>
-                      {errAddress}
+                      {erraddress}
                     </p>
                   )}
                 </div>
+
                 {/* City */}
                 <div className="flex flex-col gap-.5">
                   <p className="font-titleFont text-base font-semibold text-gray-600">
                     City
                   </p>
                   <input
-                    onChange={handleCity}
-                    value={city}
+                    onChange={handleInputChange}
+                    value={formData.city}
+                    name="city"
                     className="w-full h-8 placeholder:text-sm placeholder:tracking-wide px-4 text-base font-medium placeholder:font-normal rounded-md border-[1px] border-gray-400 outline-none"
                     type="text"
                     placeholder="Your city"
@@ -353,26 +370,27 @@ const SignUp = () => {
                   )}
                 </div>
 
-                {/* Zip code */}
+                {/* Invitecode code */}
                 <div className="flex flex-col gap-.5">
                   <p className="font-titleFont text-base font-semibold text-gray-600">
-                    Zip/Postal code
+                    InviteCode
                   </p>
                   <input
-                    onChange={handleZip}
-                    value={zip}
+                    onChange={handleInputChange}
+                    value={formData.Invitecode}
+                    name="Invitecode"
                     className="w-full h-8 placeholder:text-sm placeholder:tracking-wide px-4 text-base font-medium placeholder:font-normal rounded-md border-[1px] border-gray-400 outline-none"
                     type="text"
-                    placeholder="Your country"
+                    placeholder="Invitecode XXX"
                   />
-                  {errZip && (
+                  {errInvitecode && (
                     <p className="text-sm text-red-500 font-titleFont font-semibold px-4">
                       <span className="font-bold italic mr-1">!</span>
-                      {errZip}
+                      {errInvitecode}
                     </p>
                   )}
                 </div>
-                {/* Checkbox */}
+
                 <div className="flex items-start mdl:items-center gap-2">
                   <input
                     onChange={() => setChecked(!checked)}
@@ -385,19 +403,20 @@ const SignUp = () => {
                     <span className="text-blue-500">Privacy Policy</span>.
                   </p>
                 </div>
+
                 <button
-                  onClick={handleSignUp}
+                  type="submit" // Submit the form
                   className={`${
                     checked
-                      ? "bg-primeColor hover:bg-black hover:text-white cursor-pointer"
-                      : "bg-gray-500 hover:bg-gray-500 hover:text-gray-200 cursor-none"
+                      ? "bg-primeColor hover:bg-black hover:text-white"
+                      : "bg-gray-500 hover:bg-gray-500 hover:text-gray-200 cursor-not-allowed"
                   } w-full text-gray-200 text-base font-medium h-10 rounded-md hover:text-white duration-300`}
                 >
                   Create Account
                 </button>
                 <p className="text-sm text-center font-titleFont font-medium">
                   Don't have an Account?{" "}
-                  <Link to="/signin">
+                  <Link to="/SellerSignIn">
                     <span className="hover:text-blue-600 duration-300">
                       Sign in
                     </span>
@@ -412,4 +431,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default SellerSignUp;

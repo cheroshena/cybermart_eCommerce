@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React, { Fragment } from "react";
 import { Menu, Popover, Transition } from "@headlessui/react";
 import {
   HiOutlineBell,
@@ -7,9 +7,25 @@ import {
 } from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
 import classNames from "classnames";
+import axios from "axios";
 
 const SellerHeader = () => {
   const navigate = useNavigate();
+  const baseUrl = "http://127.0.0.1:8000/api/logout";
+
+  const handleSignout = async () => {
+    const response = await axios.post(baseUrl, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (response.status === 200) {
+      navigate("/SignIn");
+      console.log("Data sent successfully");
+    } else {
+      console.error("Request was not successful");
+    }
+  };
 
   return (
     <div className="bg-white h-16 px-4 flex justify-between items-center border-b border-gray-200">
@@ -117,8 +133,11 @@ const SellerHeader = () => {
                       active && "bg-gray-100",
                       "active:bg-gray-200 rounded-sm px-4 py-2 text-gray-700 cursor-pointer focus:bg-gray-200"
                     )}
+                    onClick={handleSignout}
                   >
+                    {/* <Link to ='/SignIn'> */}
                     Sign out
+                    {/* </Link> */}
                   </div>
                 )}
               </Menu.Item>

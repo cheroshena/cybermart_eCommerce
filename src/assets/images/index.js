@@ -5,6 +5,11 @@ import logoheader from "./logoheader.png"
 import bannerImgOne from "./banner/bannerImg1.jpg";
 import bannerImgTwo from "./banner/bannerImg2.jpg";
 import bannerImgThree from "./banner/bannerImg3.jpg";
+import bannerImgfour from "./banner/5.jpg";
+import bannerImgfive from "./banner/6.jpg";
+import bannerImgsix from "./banner/7.jpg";
+
+
 import saleImgOne from "./sale/saleImgOne.webp";
 import saleImgTwo from "./sale/saleImgTwo.webp";
 import saleImgThree from "./sale/saleImgThree.webp";
@@ -28,6 +33,27 @@ import spfTwo from "./products/specialOffer/spfTwo.jpeg";
 import spfThree from "./products/specialOffer/spfThree.jpeg";
 import spfFour from "./products/specialOffer/spfFour.jpg";
 
+//vegitables
+import cabej from "./products/vegitables/cabej.jpg";
+import carrot from "./products/vegitables/carrot.jpg";
+import garlic from "./products/vegitables/garlic.jpg";
+import onion from "./products/vegitables/onion.jpg";
+import potato from "./products/vegitables/potato.jpg";
+
+//snacks
+import kome from "./products/snacks/kome.jpg";
+import mixer from "./products/snacks/mixer.jpg";
+import mrpop from "./products/snacks/mrpop.jpg";
+import Pic121600 from "./products/snacks/Pic121600.jpg";
+import scanjumbo from "./products/snacks/scanjumbo.jpg";
+import tetos from "./products/snacks/tetos.jpg";
+
+
+//dairy
+import bread01 from "./products/dairy/bread01.jpg";
+import bread02 from "./products/dairy/bread01.jpg";
+import frenchbread from "./products/dairy/frenchbread.jpg";
+
 // Year Product
 import productOfTheYear from "./products/productOfTheYear.webp";
 // ============== Products End here ======================
@@ -45,6 +71,9 @@ export {
   saleImgTwo,
   saleImgThree,
   logoDark,
+  bannerImgfour,
+bannerImgfive,
+bannerImgsix,
   // ===================== Products start here ============
   // New Arrivals
   newArrOne,
@@ -69,4 +98,25 @@ export {
   // ===================== Products End here ==============
   paymentCard,
   emptyCart,
+
+  //vegitables
+  cabej,
+  carrot,
+  garlic,
+  onion,
+  potato,
+
+  //snacks
+  kome,
+  mixer,
+  mrpop,
+  Pic121600,
+  scanjumbo,
+  tetos,
+
+  //dairy
+  bread01,
+  bread02,
+  frenchbread,
+    
 };
