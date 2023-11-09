@@ -105,6 +105,7 @@ const SellerSignUp = () => {
         const response = await axios.post(baseUrl, {
           headers: {
             "Content-Type": "application/json",
+            
           },
           clientName: formData.clientName,
           email: formData.email,
@@ -113,26 +114,16 @@ const SellerSignUp = () => {
           address: formData.address,
           city: formData.city,
           Invitecode: formData.Invitecode,
-        });
-<<<<<<< HEAD
-  
-        //console.log("Response data: ", response);
+         });
 
-        if (response.status === 201) {
-          const token = response.data.token; // Change 'token' to the key used in the response
-          if (token) {
-          localStorage.setItem('token', token); // Save the token in localStorage
-        }
-          navigate("/SignIn");
-          setSuccessMsg("Registered!");
-          console.log("Buyer created successfully");
-        } else {
-          console.error("Request was not successful");
-        }
-=======
-
-        //console.log("Response data: ", response);
-
+      // Store the token in local storage
+      const { token } = response.data;
+      if(token){
+        localStorage.setItem('token', token);
+        console.log('Token stored in local storage:', token);
+      }else{
+        console.log('Token Not found');
+      }
         if (response.status === 201) {
           navigate("/SignIn");
           setSuccessMsg("Registered!");
@@ -140,7 +131,7 @@ const SellerSignUp = () => {
         } else {
           console.error("Request was not successful");
         }
->>>>>>> eb4696e058bd5c06c0725f43b892361405494fcc
+
       } catch (error) {
         console.error("Error sending data:", error);
 

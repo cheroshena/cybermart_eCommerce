@@ -116,7 +116,13 @@ const SellerSignUp = () => {
             city: formData.city,
             Invitecode: formData.Invitecode,
           });
-
+          const { token } = response.data;
+          if(token){
+            localStorage.setItem('token', token);
+            console.log('Token stored in local storage:', token);
+          }else{
+            console.log('Token Not found');
+          }
             if (response.status === 201) {
                 navigate('/SellerSignIn');
               console.log('Data sent successfully');
