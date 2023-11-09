@@ -5,6 +5,10 @@ import {
   bannerImgOne,
   bannerImgTwo,
   bannerImgThree,
+  bannerImgfour,
+  bannerImgfive,
+  bannerImgsix,
+
 } from "../../assets/images";
 import Image from "../designLayouts/Image";
 
@@ -104,12 +108,27 @@ const Banner = () => {
       <Slider {...settings}>
         <Link to="/offer">
           <div>
-            <Image imgSrc={bannerImgOne} />
+            <Image imgSrc={bannerImgfour} />
           </div>
         </Link>
         <Link to="/offer">
           <div>
             <Image imgSrc={bannerImgTwo} />
+          </div>
+        </Link>
+        <Link to="/offer">
+          <div>
+            <Image imgSrc={bannerImgfive} />
+          </div>
+        </Link>
+        <Link to="/offer">
+          <div>
+            <Image imgSrc={bannerImgOne} />
+          </div>
+        </Link>
+        <Link to="/offer">
+          <div>
+            <Image imgSrc={bannerImgsix} />
           </div>
         </Link>
         <Link to="/offer">

@@ -5,6 +5,7 @@ import {
   createRoutesFromElements,
   Route,
   ScrollRestoration,
+  Navigate
 } from "react-router-dom";
 import Footer from "./components/home/Footer/Footer";
 import FooterBottom from "./components/home/Footer/FooterBottom";
@@ -48,6 +49,7 @@ const Layout = () => {
   );
 };
 
+
 const SellerLayout = () => {
   return (
     <div>
@@ -60,13 +62,8 @@ const SellerLayout = () => {
         <div className="p-4">
         <Outlet />
         </div>
-      </div>
-      
-      
-      
-      </div>
-      
-      
+      </div> 
+      </div>   
     </div>
   );
 };
