@@ -1,12 +1,14 @@
 import logo from "./logo3.png";
 import logoDark from "./logoDark.png";
 import logoLight from "./logoLight.png";
+import logoheader from "./logoheader.png"
 import bannerImgOne from "./banner/bannerImg1.jpg";
 import bannerImgTwo from "./banner/bannerImg2.jpg";
 import bannerImgThree from "./banner/bannerImg3.jpg";
 import saleImgOne from "./sale/saleImgOne.webp";
 import saleImgTwo from "./sale/saleImgTwo.webp";
 import saleImgThree from "./sale/saleImgThree.webp";
+
 // ============== Products Start here ====================
 // New Arrivals
 import newArrOne from "./products/newArrival/newArrOne.png";
@@ -35,6 +37,7 @@ import emptyCart from "../images/emptyCart.png";
 export {
   logo,
   logoLight,
+  logoheader,
   bannerImgOne,
   bannerImgTwo,
   bannerImgThree,
