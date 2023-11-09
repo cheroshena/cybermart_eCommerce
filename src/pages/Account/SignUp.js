@@ -114,6 +114,7 @@ const SellerSignUp = () => {
           city: formData.city,
           Invitecode: formData.Invitecode,
         });
+<<<<<<< HEAD
   
         //console.log("Response data: ", response);
 
@@ -128,6 +129,18 @@ const SellerSignUp = () => {
         } else {
           console.error("Request was not successful");
         }
+=======
+
+        //console.log("Response data: ", response);
+
+        if (response.status === 201) {
+          navigate("/SignIn");
+          setSuccessMsg("Registered!");
+          console.log("Buyer created successfully");
+        } else {
+          console.error("Request was not successful");
+        }
+>>>>>>> eb4696e058bd5c06c0725f43b892361405494fcc
       } catch (error) {
         console.error("Error sending data:", error);
 
