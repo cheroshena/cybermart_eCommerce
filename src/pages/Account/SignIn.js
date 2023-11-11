@@ -99,7 +99,7 @@ const handleSubmit = async (e) => {
             if (response.status === 200) {
                
                 if (response.data.token) {
-                    navigate('/dashboard');
+                    navigate('/');
                 } else {
                     setSuccessMsg(response.data.message);
                 }
@@ -206,7 +206,7 @@ const handleSubmit = async (e) => {
                     className="w-full lgl:w-[450px] h-screen flex items-center justify-center">
                         <div className="px-6 py-4 w-full h-[90%] flex flex-col justify-center overflow-y-scroll scrollbar-thin scrollbar-thumb-primeColor">
                             <h1 className="font-titleFont underline underline-offset-4 decoration-[1px] font-semibold text-3xl mdl:text-4xl mb-4">
-                            Hey Seller! Sign in
+                            Sign in
                             </h1>
                             <div className="flex flex-col gap-3">
                                 {/* Email */}
@@ -259,7 +259,7 @@ const handleSubmit = async (e) => {
                                 </button>
                                 <p className="text-sm text-center font-titleFont font-medium">
                                     Don't have an Account?{" "}
-                                    <Link to="/sellersignup">
+                                    <Link to="/signup">
                                         <span className="hover:text-blue-600 duration-300">
                                             Sign up
                                         </span>

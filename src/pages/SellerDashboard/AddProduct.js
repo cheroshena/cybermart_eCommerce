@@ -2,7 +2,29 @@ import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
+const product = {
+  pName:"",
+  pBrand:"",
+  pCategory:"",
+  pUnit:"",
+  pMinqty:"",
+  pLotnum:"",
+  pDate:"",
+  pBarcode:"",
+  pImage:"",
+  pPrice:"",
+  ptax:"",
+  pPurches:"",
+  pDiscount:"",
+  pTaxtype:"",
+  pMargin:"",
+  pSalePrice:"",
+  pFinalPrice:""
+
+}
 const AddProduct = () => {
+ 
+  const [values , setValues] =  useState(product);
   const [startDate, setStartDate] = useState(new Date());
   const [price, setPrice] = useState("");
   const [purchasePrice, setPurchasePrice] = useState("");
@@ -11,6 +33,7 @@ const AddProduct = () => {
   const [finalPrice, setFinalPrice] = useState("");
   const [showPopup, setShowPopup] = useState(false);
   const [showPopup2, setShowPopup2] = useState(false);
+  const baseUrl = 'http://127.0.0.1:8000/api/product';
 
   const handleDateChange = (date) => {
     setStartDate(date);
@@ -18,6 +41,14 @@ const AddProduct = () => {
 
   const handlePurchasePriceChange = (event) => {
     setPurchasePrice(event.target.value);
+  };
+
+  const handleInputChange = (e) =>{
+    const {name , value} = e.target;
+    setValues({
+      ...values,
+      [name]:value,
+    });
   };
 
   const handlePriceChange = (event) => {
@@ -54,13 +85,19 @@ const AddProduct = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Handle form submission logic here
+   
+
+    const formData = {
+      p_name:event.target.elements
+    }
+
   };
 
   return (
    
     <div >
-      <form className="col-span-1  m-4 rounded-lg border bg-white p-4">
+      <form  onSubmit={handleSubmit}
+      className="col-span-1  m-4 rounded-lg border bg-white p-4">
         <div className="-mx-3 mb-6 flex flex-wrap ">
           <h1 className="block pl-2 font-extrabold uppercase ">
             Create Product
@@ -81,6 +118,9 @@ const AddProduct = () => {
               type="text"
               placeholder="Product"
               required
+              value={values.pName}
+              onChange={handleInputChange}
+              name="pName"
             ></input>
           </div>
           <div className="mb-6 w-full px-3 md:mb-0 md:w-1/3">
@@ -432,7 +472,7 @@ const AddProduct = () => {
         <hr className="my-4 border-gray-200" />
 
         <div className="mb-4 flex justify-end  ">
-          <button className="mr-2 rounded-lg border bg-blue-500 px-4 py-2 text-white">
+          <button type="sumbit" className="mr-2 rounded-lg border bg-blue-500 px-4 py-2 text-white">
             Save
           </button>
           {/* Export Product Button */}
