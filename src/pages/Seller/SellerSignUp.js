@@ -119,7 +119,7 @@ const SellerSignUp = () => {
           const { token } = response.data;
           if(token){
             localStorage.setItem('token', token);
-            console.log('Token stored in local storage:', token);
+          //  console.log('Token stored in local storage:', token);
           }else{
             console.log('Token Not found');
           }

@@ -1,30 +1,29 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 const product = {
-  pName:"",
-  pBrand:"",
-  pCategory:"",
-  pUnit:"",
-  pMinqty:"",
-  pLotnum:"",
-  pDate:"",
-  pBarcode:"",
-  pImage:"",
-  pPrice:"",
-  ptax:"",
-  pPurches:"",
-  pDiscount:"",
-  pTaxtype:"",
-  pMargin:"",
-  pSalePrice:"",
-  pFinalPrice:""
-
-}
+  pName: "",
+  pBrand: "",
+  pCategory: "",
+  pUnit: "",
+  pMinqty: "",
+  pLotnum: "",
+  pDate: "",
+  pBarcode: "",
+  pImage: "",
+  pPrice: "",
+  ptax: "",
+  pPurches: "",
+  pDiscount: "",
+  pTaxtype: "",
+  pMargin: "",
+  pSalePrice: "",
+  pFinalPrice: "",
+};
 const AddProduct = () => {
- 
-  const [values , setValues] =  useState(product);
+  const [values, setValues] = useState(product);
   const [startDate, setStartDate] = useState(new Date());
   const [price, setPrice] = useState("");
   const [purchasePrice, setPurchasePrice] = useState("");
@@ -33,7 +32,9 @@ const AddProduct = () => {
   const [finalPrice, setFinalPrice] = useState("");
   const [showPopup, setShowPopup] = useState(false);
   const [showPopup2, setShowPopup2] = useState(false);
-  const baseUrl = 'http://127.0.0.1:8000/api/product';
+  const baseUrl = "http://127.0.0.1:8000/api/product";
+  const getUrl = "http://localhost:8000/api/categories";
+  const [option, setOption] = useState([]);
 
   const handleDateChange = (date) => {
     setStartDate(date);
@@ -43,12 +44,35 @@ const AddProduct = () => {
     setPurchasePrice(event.target.value);
   };
 
-  const handleInputChange = (e) =>{
-    const {name , value} = e.target;
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
     setValues({
       ...values,
-      [name]:value,
+      [name]: value,
     });
+  };
+
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await axios.get(getUrl);
+        setOption(response.data); 
+        console.log(response.data);
+      } catch (error) {
+        console.error("Error fetching categories:", error.message);
+      }
+    };
+
+    fetchCategories();
+  }, []);
+  
+
+  const [selectedFile, setSelectedFile] = useState(null);
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    setSelectedFile(file);
+    // You can do further processing with the selected file if needed
   };
 
   const handlePriceChange = (event) => {
@@ -83,21 +107,63 @@ const AddProduct = () => {
     setSalesPrice(event.target.value);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-   
 
-    const formData = {
-      p_name:event.target.elements
+    if (!values.pName) {
+      console.error("Product name is required.");
+      return;
     }
 
+    try {
+      const formData = {
+        // p_name:event.target.elements
+        p_name: values.pName,
+        p_brand: values.pBrand,
+        p_category: values.pCategory,
+        p_unit: values.pUnit,
+        p_minqty: values.pMinqty,
+        p_lotnumber: values.pLotnum,
+        // p_exprireddate:v,
+        p_barcode: values.pBarcode,
+        p_image: values.pImage,
+        p_price: values.pPrice,
+        p_tax: values.ptax,
+        p_purchesprice: values.pPurches,
+        p_discount: values.pDiscount,
+        p_taxtype: values.pTaxtype,
+        p_margine: values.pMargin,
+        p_saleprice: values.pSalePrice,
+        p_finalprice: values.pFinalPrice,
+      };
+
+      if (selectedFile) {
+        formData.append("p_image", selectedFile, selectedFile.name);
+      }
+      const response = await fetch(baseUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        console.log("Product added successfully");
+      } else {
+        console.error("Failed to submit product:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error submitting product:", error.message);
+    }
   };
 
   return (
-   
-    <div >
-      <form  onSubmit={handleSubmit}
-      className="col-span-1  m-4 rounded-lg border bg-white p-4">
+    <div>
+      <form
+        onSubmit={handleSubmit}
+        className="col-span-1  m-4 rounded-lg border bg-white p-4"
+      >
         <div className="-mx-3 mb-6 flex flex-wrap ">
           <h1 className="block pl-2 font-extrabold uppercase ">
             Create Product
@@ -121,7 +187,7 @@ const AddProduct = () => {
               value={values.pName}
               onChange={handleInputChange}
               name="pName"
-            ></input>
+            />
           </div>
           <div className="mb-6 w-full px-3 md:mb-0 md:w-1/3">
             <label
@@ -136,8 +202,8 @@ const AddProduct = () => {
                 id="grid-state"
               >
                 <option>Select</option>
-                <option>mng</option>
-                <option>lmlkkuh</option>
+                <option>Maliban</option>
+                <option>Munche</option>
               </select>
               <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                 <svg
@@ -165,8 +231,12 @@ const AddProduct = () => {
                 required
               >
                 <option value="">Select</option>
-                <option>xplx</option>
-                <option>jksuh</option>
+                {option.map((category)=>(
+                  <option key={category.cate_id} value={category.cate_id}>
+                    {category.category_name}
+                  </option>
+                ))}
+                
               </select>
               <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                 <svg
@@ -194,8 +264,8 @@ const AddProduct = () => {
                 required
               >
                 <option value="">Select</option>
-                <option>xplx</option>
-                <option>jksuh</option>
+                <option>1</option>
+                <option>2</option>
               </select>
               <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                 <svg
@@ -220,7 +290,10 @@ const AddProduct = () => {
               id="grid-city"
               type="text"
               placeholder=""
-            ></input>
+              value={values.pMinqty}
+              onChange={handleInputChange}
+              name="pMinqty"
+            />
           </div>
           <div className="mb-6 w-full px-3 md:mb-0 md:w-1/3">
             <label
@@ -234,13 +307,13 @@ const AddProduct = () => {
               id="grid-city"
               type="text"
               placeholder=""
-            ></input>
+              value={values.pLotnum}
+              onChange={handleInputChange}
+              name="pLotnum"
+            />
           </div>
-    
         </div>
         <div className="-mx-3 mb-2 flex flex-wrap">
-         
-        
           <div className="mb-6 w-full px-3 md:mb-0 md:w-1/3">
             <label
               className="mb-2 block text-xs font-semibold uppercase tracking-wide text-gray-700"
@@ -267,7 +340,10 @@ const AddProduct = () => {
               id="grid-city"
               type="text"
               placeholder="Barcode"
-            ></input>
+              value={values.pBarcode}
+              onChange={handleInputChange}
+              name="pBarcode"
+            />
           </div>
           <div className="mb-6 w-full px-3 md:mb-0 md:w-1/3 ">
             <label
@@ -276,13 +352,31 @@ const AddProduct = () => {
             >
               Product Image
             </label>
-            <button
+            {/* <button
               className="focus:shadow-outline rounded bg-purple-500 px-4 py-2 font-bold text-white shadow hover:bg-purple-300 focus:outline-none"
-              type="button"
+              type="file"
             >
               Choose File
-            </button>
-            <p className="text-xs italic text-red-500">
+            </button> */}
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleFileChange}
+              className="hidden pt-4" // Hide the default file input style
+              id="fileInput"
+            />
+            <label
+              htmlFor="fileInput"
+              className="focus:shadow-outline rounded bg-purple-500 px-4 py-2 font-bold text-white shadow hover:bg-purple-300 cursor-pointer"
+            >
+              Choose File
+            </label>
+            {selectedFile && (
+              <p className="text-xs italic text-gray-700">
+                Selected File: {selectedFile.name}
+              </p>
+            )}
+            <p className="pt-3 text-xs italic text-red-500">
               Max Width/Height: 1000px * 1000px & Size: 1MB
             </p>
           </div>
@@ -303,8 +397,9 @@ const AddProduct = () => {
               id="grid-city"
               type="text"
               placeholder="$"
-              value={price}
-              onChange={handlePriceChange}
+              value={values.pPrice}
+              onChange={handleInputChange}
+              name="pPrice"
               required
             ></input>
           </div>
@@ -320,11 +415,10 @@ const AddProduct = () => {
               <select
                 className="block w-full appearance-none rounded border border-gray-200 bg-gray-200 px-4 py-3 pr-8 leading-tight text-gray-700 focus:border-gray-500 focus:bg-white focus:outline-none"
                 id="grid-state"
-                required
+                // required
               >
                 <option value="">Select</option>
-                <option>xplx</option>
-                <option>jksuh</option>
+                <option>5%</option>
               </select>
               <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                 <svg
@@ -350,7 +444,9 @@ const AddProduct = () => {
               id="grid-city"
               type="text"
               placeholder="$"
-              value={purchasePrice}
+              value={values.pPurches}
+              // onChange={handleInputChange}
+              name="pPurches"
               onChange={handlePurchasePriceChange}
               disabled
               required
@@ -371,6 +467,9 @@ const AddProduct = () => {
               id="grid-city"
               type="text"
               placeholder="$"
+              value={values.pSalePrice}
+              onChange={handleInputChange}
+              name="pSalePrice"
             ></input>
           </div>
 
@@ -387,8 +486,7 @@ const AddProduct = () => {
                 id="grid-state"
               >
                 <option value="">Select</option>
-                <option>xplx</option>
-                <option>jksuh</option>
+                <option>income</option>
               </select>
               <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                 <svg
@@ -445,8 +543,10 @@ const AddProduct = () => {
               id="grid-city"
               type="text"
               placeholder="$"
-              value={salesPrice}
-              onChange={handleSalesPriceChange}
+              value={values.pDiscount}
+              onChange={handleInputChange}
+              name="pDiscount"
+              // onChange={handleSalesPriceChange}
               required
             ></input>
           </div>
@@ -472,7 +572,10 @@ const AddProduct = () => {
         <hr className="my-4 border-gray-200" />
 
         <div className="mb-4 flex justify-end  ">
-          <button type="sumbit" className="mr-2 rounded-lg border bg-blue-500 px-4 py-2 text-white">
+          <button
+            type="sumbit"
+            className="mr-2 rounded-lg border bg-blue-500 px-4 py-2 text-white"
+          >
             Save
           </button>
           {/* Export Product Button */}
@@ -482,7 +585,6 @@ const AddProduct = () => {
         </div>
       </form>
     </div>
-    
   );
 };
 

@@ -120,9 +120,9 @@ const SellerSignUp = () => {
       const { token } = response.data;
       if(token){
         sessionStorage.setItem('token', token);
-        console.log('Token stored in local storage:', token);
+        //console.log('Token stored in local storage:', token);
       }else{
-        console.log('Token Not found');
+       // console.log('Token Not found');
       }
         if (response.status === 201) {
           navigate("/SignIn");
