@@ -33,8 +33,11 @@ const AddProduct = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [showPopup2, setShowPopup2] = useState(false);
   const baseUrl = "http://127.0.0.1:8000/api/product";
-  const getUrl = "http://localhost:8000/api/categories";
+  const getCate = "http://localhost:8000/api/categories";
+  const getBrand = 'http://localhost:8000/api/brands';
+
   const [option, setOption] = useState([]);
+  const [brand , setBrand] = useState([]);
 
   const handleDateChange = (date) => {
     setStartDate(date);
@@ -53,20 +56,37 @@ const AddProduct = () => {
   };
 
 
+  // useEffect(() => {
+  //   const fetchCategories = async () => {
+  //     try {
+  //       const response = await axios.get(getCate);
+  //       setOption(response.data); 
+  //       console.log(response.data);
+  //     } catch (error) {
+  //       console.error("Error fetching categories:", error.message);
+  //     }
+  //   };
+
+  //   fetchCategories();
+  // }, []);
   useEffect(() => {
-    const fetchCategories = async () => {
+    const fetchData = async () => {
       try {
-        const response = await axios.get(getUrl);
-        setOption(response.data); 
-        console.log(response.data);
+        const [brandsResponse, categoriesResponse] = await Promise.all([
+          axios.get(getBrand),
+          axios.get(getCate)
+        ]);
+
+        setBrand(brandsResponse.data);
+        setOption(categoriesResponse.data);
+  
       } catch (error) {
-        console.error("Error fetching categories:", error.message);
+        console.error("Error fetching data:", error.message);
       }
     };
 
-    fetchCategories();
+    fetchData();
   }, []);
-  
 
   const [selectedFile, setSelectedFile] = useState(null);
   const handleFileChange = (event) => {
@@ -201,9 +221,12 @@ const AddProduct = () => {
                 className="block w-full appearance-none rounded border border-gray-200 bg-gray-200 px-4 py-3 pr-8 leading-tight text-gray-700 focus:border-gray-500 focus:bg-white focus:outline-none"
                 id="grid-state"
               >
-                <option>Select</option>
-                <option>Maliban</option>
-                <option>Munche</option>
+                <option value="">Select</option>
+                {brand.map((brand)=>(
+                  <option key={brand.brand_id} value={brand.brand_id}>
+                    {brand.brand_name}
+                  </option>
+                ))}
               </select>
               <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                 <svg
